@@ -4,16 +4,25 @@
 </head>
 
 <body>
-  {{> board}}
+	{{> sidebar}}
+	{{> board}}
 </body>
 
 <template name="board">
 	<div class="outerBox">
 		<div class="container">
-		<div>
+		</div>
 	</div>
 </template>
 
 <template name="square">
 	<div class="square {{selected}}" style="{{style}}" title="{{title}}">&nbsp;</div>
+</template>
+
+<template name="sidebar">
+	<div class="sidebar">
+		{{square.x}}x{{square.y}}
+		<input placeholder="Title" class="title" value="{{square.title}}">
+		<input placeholder="Title" type="checkbox" class="bgcolor" {{#if square.style.background}}checked="checked"{{/if}}>
+	</div>
 </template>
