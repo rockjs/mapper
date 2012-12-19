@@ -16,6 +16,10 @@ Template.board.rendered = function() {
 	}
 };
 
+Meteor.startup(function() {
+	jQuery( document ).tooltip();
+});
+
 Template.square.style = function() {
 	var data = BoardData.findOne({ x: this.x, y: this.y });
 	return "left: " + this.x + "em; top:" + this.y + "em";
