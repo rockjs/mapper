@@ -1,0 +1,19 @@
+/* CSS declarations go here */
+.container {
+	font-size: 20px;
+	position: relative;
+	width: 100em;
+	height: 100em;
+}
+
+.square {
+	position: absolute;
+	box-sizing: border-box;
+	outline: 1px solid #777;
+	width: 1em;
+	height: 1em;
+}
+
+.selected {
+	background: yellow;
+}
