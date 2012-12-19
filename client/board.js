@@ -25,6 +25,10 @@ Template.square.selected = function() {
 	var selected = BoardData.findOne({ x: this.x, y: this.y });
 	return selected ? "selected" : "";
 };
+Template.square.title = function() {
+	var selected = BoardData.findOne({ x: this.x, y: this.y });
+	return (selected && selected.title) || "";
+};
 
 Template.square.events({
 	"click .square": function() {
