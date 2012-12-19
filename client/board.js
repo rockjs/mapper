@@ -31,19 +31,17 @@ Template.square.style = function() {
 	}, "");
 };
 
-Template.square.selected = function() {
-	var current = Session.get( "selectedsquare" );
-	if ( current && this.x === current.x && this.y === current.y ) {
-		return "selected";
-	}
-	return "";
-};
-
 Template.square.title = function() {
-	var selected = BoardData.findOne({ x: this.x, y: this.y });
-	return (selected && selected.title) || "";
+	var square = BoardData.findOne({ x: this.x, y: this.y });
+	return (square && square.title) || "";
 };
 
+Template.square.rendered = function() {
+	var selected = Session.get("selectedsquare");
+	if( selected && selected.x === this.data.x && selected.y === this.data.y ) {
+		jQuery(this.find(".square")).addClass("selected");
+	}
+};
 Template.square.events({
 	"click .square": function() {
 		var obj = { x: this.x, y: this.y };
@@ -51,6 +49,8 @@ Template.square.events({
 		if ( !BoardData.findOne( obj ) ) {
 			BoardData.insert( obj );
 		}
+		jQuery(".square.selected").removeClass("selected");
+		jQuery(event.target).addClass("selected");
 	}
 });
 
